@@ -10,6 +10,17 @@ namespace Event_app
     {
         static void Main(string[] args)
         {
+            Person person = new Person();
+            person.GoToSleep += Person_GoToSleep;// создание обработчика событий
+            person.TakeTime(DateTime.Parse("27.12.2018 21:13:01"));
+            person.TakeTime(DateTime.Parse("27.12.2018 4:13:01"));
+        }
+
+        // обработчик событий
+        private static void Person_GoToSleep()
+        {
+            Console.WriteLine("The man go to sleep");
+            Console.ReadLine();
         }
     }
 }
