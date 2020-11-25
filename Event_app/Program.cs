@@ -10,10 +10,18 @@ namespace Event_app
     {
         static void Main(string[] args)
         {
-            Person person = new Person();
-            person.GoToSleep += Person_GoToSleep;// создание обработчика событий
+            Person person = new Person { Name = "John"};
+           // person.Name = "John";
+            person.GoToSleep += Person_GoToSleep;// создание обработчика событий(подписка на событие)
+            person.DoWork += Person_DoWork;
             person.TakeTime(DateTime.Parse("27.12.2018 21:13:01"));
             person.TakeTime(DateTime.Parse("27.12.2018 4:13:01"));
+        }
+
+     
+        private static void Person_DoWork(object sender, EventArgs e)
+        {
+            Console.WriteLine($"{ (Person)sender} работает работу");
         }
 
         // обработчик событий
